@@ -1,6 +1,7 @@
 # Описание
 Программа при запуска копирует в папку mods выбранные моды пользователя для более простого переключения между сборками
 # Установка (ubuntu)
+<исходный код >  
 <git clone https://github.com/kulisworm/ModsLauncher && cd ModsLauncher >
 <chmod +x main.py >
 <sudo python3 main.py >
