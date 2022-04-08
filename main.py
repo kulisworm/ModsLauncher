@@ -42,7 +42,7 @@ config.read('config.ini')
 window = Tk()
 window.title("ModsLauncher")
 window.geometry('320x200')
-window.configure(bg='gray')
+window.configure(bg="gray")
 tab_control = ttk.Notebook(window)
 tab1 = ttk.Frame(tab_control)
 tab2 = ttk.Frame(tab_control)
@@ -114,10 +114,28 @@ def create_sh():
     os.system("cat ModsLauncher.sh")
     print("")
     print("[bold green](✓)Успешно создано! Находится в [/bold green]" + pwd + "/ModsLauncher.sh")
+def exec():
+    print("[bold purple]Подключение модпака[/bold purple]")
+    game_folder = config["settings"]["directory"]
+    folder = game_folder
+    for the_file in os.listdir(folder):
+        file_path = os.path.join(folder, the_file)
+        try:
+            if os.path.isfile(file_path):
+                os.unlink(file_path)
+        except Exception as e:
+            print(e)
+    modpack = combo2.get()
+    for f in os.listdir(modpack):
+        if os.path.isfile(os.path.join(modpack, f)):
+            shutil.copy(os.path.join(modpack, f), os.path.join(game_folder, f))
+    print("[bold green]Лаунчер запускай сам[/bold green]")
 btn = Button(tab1, text="Запуск", bg="green", command=clicked)
 txt2 = Label(tab2, text="Вы можете создать .sh скрипт на запуск лаунчера")
 txt2.grid(column=0, row=4)
 btn2 = Button(tab2, text="Создать", command=create_sh)
+btn3 = Button(tab1, text="Запуск (без лаунчера)", bg="purple", command=exec)
+btn3.grid(column=0, row=6)
 btn2.grid(column=0, row=5)
 btn.grid(column=0, row=4)
 window.mainloop() #эту хуйню не трогать
