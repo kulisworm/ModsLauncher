@@ -107,9 +107,10 @@ def create_sh():
     pwd = os.getcwd()
     print("Создаю скрипт")
     with open("ModsLauncher.sh", "w") as file:
-        file.write("sudo python3 " + pwd + " /main.py")
+        file.write("sudo python3 " + pwd + "/main.py")
     print("Проверка")
     print("")
+    os.system("chmod +x ModsLauncher.sh")
     os.system("cat ModsLauncher.sh")
     print("")
     print("[bold green](✓)Успешно создано! Находится в [/bold green]" + pwd + "/ModsLauncher.sh")
